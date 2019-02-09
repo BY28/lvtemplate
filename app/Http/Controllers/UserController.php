@@ -101,21 +101,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$id],
+            'password' => ['sometimes', 'nullable', 'string', 'min:6', 'confirmed'],
         ]);
 
         $name = $request->input('name');
         $email = $request->input('email');
-        $password = $request->input('password');
+        $password = $request->input('password') ? Hash::make($request->input('password')) : $this->userRepository->getById($id)->password;
 
         $inputs = [
             'name' => $name,
             'email' => $email,
-            'password' => Hash::make($password),
+            'password' => $password,
         ];
 
         $user = $this->userRepository->update($id, $inputs);
