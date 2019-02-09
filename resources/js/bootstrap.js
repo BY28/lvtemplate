@@ -1,3 +1,20 @@
+import Vue from 'vue';
+window.Vue = Vue;
+
+
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+import {mapGetters} from 'vuex';
+window.mapGetters = mapGetters;
+
+
+import Form from './utilities/Form';
+window.Form = Form;
 
 window._ = require('lodash');
 

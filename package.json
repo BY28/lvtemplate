@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "@creative-tim-official/argon-dashboard-free": "^1.0.0",
-    "@fortawesome/fontawesome-free": "^5.7.1"
+    "@fortawesome/fontawesome-free": "^5.7.1",
+    "vue-router": "^3.0.2",
+    "vuex": "^3.1.0"
   }
 }
